@@ -1,11 +1,20 @@
-import React from 'react'
-import { Menu } from "antd";
-import { Anchor } from 'antd';
+import React, { useState } from 'react'
 
-const { Link } = Anchor;
+import { Anchor } from 'antd';
+import { Drawer, Button } from 'antd';
+
+
 
 
 function AppHeader() {
+    const { Link } = Anchor;
+    const [visible, setVisible] = useState(false);
+    const showDrawer = () => {
+        setVisible(true);
+    };
+    const onClose = () => {
+        setVisible(false);
+    };
     return (
         <div className="container-fluid">
             <div className="header">
@@ -13,28 +22,46 @@ function AppHeader() {
                     <i className="fas fa-bolt"></i>
                     <a href="http://google.com">Tech</a>
                 </div>
-                <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['home']}>
-                    <Menu.Item key="home">nav 1</Menu.Item>
-                    <Menu.Item key="2">nav 2</Menu.Item>
-                    <Menu.Item key="3">nav 3</Menu.Item>
-                    <Menu.Item key="4">nav 3</Menu.Item>
-                    <Menu.Item key="5">nav 3</Menu.Item>
-                    <Menu.Item key="6">nav 3</Menu.Item>
-                    <Menu.Item key="7">nav 3</Menu.Item>
-                    <Menu.Item key="8">nav 3</Menu.Item>
-                    <Menu.Item key="9">nav 3</Menu.Item>
-                </Menu>
 
-                <Anchor>
-                    <Link href="#hero" title="Home" />
-                    <Link href="#about" title="About" />
-                    <Link href="#feature" title="feature" />
-                    <Link href="#works" title="works" />
-                    <Link href="#faq" title="faq" />
-                    <Link href="#" title="" />
+                <div className="mobileVisible">
+                    <Button type="primary" onClick={showDrawer}>
+                        <i className="fas fa-bars"></i>
+                    </Button>
+                    <Drawer
+                        title="Menu"
+                        placement="right"
+                        closable={false}
+                        onClose={onClose}
+                        visible={visible}
+                    >
+                        <Anchor targetOffset="65">
+                            <Link href="#hero" title="Home" />
+                            <Link href="#about" title="About" />
+                            <Link href="#feature" title="Features" />
+                            <Link href="#works" title="How it works" />
+                            <Link href="#faq" title="FAQ" />
+                            <Link href="#pricing" title="Pricing" />
+                            <Link href="#contact" title="Contact" />
+                        </Anchor>
+                    </Drawer>
+
+                </div>
 
 
-                </Anchor>
+                <div className="mobileHidden">
+                    <Anchor targetOffset="65">
+                        <Link href="#hero" title="Home" />
+                        <Link href="#about" title="About" />
+                        <Link href="#feature" title="Features" />
+                        <Link href="#works" title="How it works" />
+                        <Link href="#faq" title="FAQ" />
+                        <Link href="#pricing" title="Pricing" />
+                        <Link href="#contact" title="Contact" />
+                    </Anchor>
+                </div>
+
+
+
             </div>
         </div>
         // <h1>

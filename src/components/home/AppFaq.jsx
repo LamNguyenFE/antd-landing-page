@@ -46,7 +46,7 @@ function AppFaq() {
                 <Collapse defaultActiveKey={['1']}>
                     {items.map(item => {
                         return (
-                            <Panel header={item.header} key={`"${item.key}"`} key={item.key}>
+                            <Panel header={item.header} key={item.key}>
                                 <p>{item.answer}</p>
                             </Panel>
                         );

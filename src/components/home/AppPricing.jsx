@@ -1,8 +1,6 @@
 import React from 'react'
-import { Collapse, Button, Card, List } from 'antd';
+import { Button, Card, List } from 'antd';
 
-
-const { Panel } = Collapse;
 const items = [
     {
         title: 'Basic',

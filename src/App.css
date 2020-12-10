@@ -475,4 +475,7 @@ responsive
   .mobileHidden {
     display: none;
   }
+  .heroBlock .content {
+    text-align: center;
+  }
 }
